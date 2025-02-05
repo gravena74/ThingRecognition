@@ -35,13 +35,42 @@ h1 {
   line-height: 1.1;
 }
 
-button {
-  width: 50%;
+.container{
+  height: 20vh;
+  width: 30vw;
+}
+
+.box{
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+  color: #747bff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.uploadFileContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: dashed #747bff;
+  border-radius: 15px;
+  color: #747bff;
+  background-color: transparent;
+  height: 100%;
+  width: 100%;
+  font-size: 200%;
+  cursor: pointer;
+}
+
+.submitButton{
+  width: 100%;
   margin: 10px 0;
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
-  font-size: 1em;
   font-weight: 500;
   font-family: inherit;
   background-color: #e7cfc3;
@@ -49,7 +78,7 @@ button {
   cursor: pointer;
   transition: background-color 0.25s;
 }
-button:hover {
+.submitButton:hover {
   background-color: #eb966b;
 } 
 
@@ -66,22 +95,4 @@ button:hover {
   button {
     background-color: #f9f9f9;
   }
-}
-
-.boxOut{
-  height: 20vh;
-  width: 30vw;
-  border: dashed #747bff;
-  border-radius: 30px;
-}
-
-.boxIn{
-  cursor: pointer;
-  height: 100%;
-  width: 100%;
-  color: #747bff;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  font-size: 45px;
 }
