@@ -1,30 +1,70 @@
-import { useEffect, useRef, useState } from 'react'
-import axios from "axios";
-import './App.css'
+import { useState } from 'react';
+import axios from 'axios';
+import './App.css';
 
 function App() {
-  const [valor, setValor] = useState(null)
+  // Estado para armazenar o arquivo selecionado
+  const [file, setFile] = useState(null);
 
+  // Função para capturar o arquivo selecionado
+  const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0]; // Pega o primeiro arquivo selecionado
+    setFile(selectedFile); // Armazena o arquivo no estado
+    console.log('Arquivo selecionado:', selectedFile);
+  };
 
+  // Função para enviar o arquivo para o backend
   const activate = () => {
-    axios.get('http://127.0.0.1:5000') // Endpoint do backend
-      .then(response => {
-        console.log("Valor recebido:", response.data.valor); // Log do valor recebido
+    const answer = document.querySelector('.answer'); // Adicionado 'const' para declarar a variável
+    console.log(answer);
+
+    if (!file) {
+      console.log('Nenhum arquivo selecionado.');
+      return;
+    }
+
+    // Cria um FormData para enviar o arquivo
+    const formData = new FormData();
+    formData.append('file', file); // Adiciona o arquivo ao FormData
+
+    // Envia o arquivo para o backend usando axios
+    axios
+      .post('http://127.0.0.1:5000/', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data', // Define o tipo de conteúdo como multipart/form-data
+        },
       })
-      .catch(error => {
-        console.error("Erro ao buscar dados: ", error);
+      .then((response) => {
+        console.log('Resposta do servidor:', response.data);
+        answer.innerHTML = response.data
+      })
+      .catch((error) => {
+        console.error('Erro ao enviar arquivo:', error);
       });
   };
 
   return (
     <div className='container'>
       <div className='box'>
-        <input type='file' id='upload' hidden onChange={e => setFile(e.target.value)}/>
-        <label htmlFor="upload" className='uploadFileContainer'>Choose file</label>
-        <button onClick={activate} className='submitButton'>Submit</button>
+        {/* Input de arquivo */}
+        <input
+          type='file'
+          id='upload'
+          hidden
+          onChange={handleFileChange} // Captura o arquivo selecionado
+        />
+        <label htmlFor='upload' className='uploadFileContainer'>
+          Choose file
+        </label>
+
+        {/* Botão de envio */}
+        <button onClick={activate} className='submitButton'>
+          Submit
+        </button>
+        <h3>Answer: <span className='answer'>----</span></h3>
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
