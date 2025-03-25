@@ -35,6 +35,20 @@ h1 {
   line-height: 1.1;
 }
 
+.container_father{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 5% 0;
+  height: 100vh;
+}
+
+.title{
+  color: #747bff;
+  margin: 5% 0;
+}
+
 .container{
   height: 20vh;
   width: 30vw;
@@ -81,6 +95,20 @@ h1 {
 .submitButton:hover {
   background-color: #eb966b;
 } 
+
+.info{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container_info{
+  display: flex;
+  background-color: #747bff;
+  border-radius: 15px;
+  padding: 15px;
+
+}
 
 
 

@@ -8,15 +8,16 @@ function App() {
 
   // Função para capturar o arquivo selecionado
   const handleFileChange = (e) => {
+    const ready_file = document.querySelector('.uploadFileContainer');
     const selectedFile = e.target.files[0]; // Pega o primeiro arquivo selecionado
     setFile(selectedFile); // Armazena o arquivo no estado
-    console.log('Arquivo selecionado:', selectedFile);
+    // console.log('Arquivo selecionado:', selectedFile);
+    ready_file.innerHTML = "Ready"
   };
 
   // Função para enviar o arquivo para o backend
   const activate = () => {
-    const answer = document.querySelector('.answer'); // Adicionado 'const' para declarar a variável
-    console.log(answer);
+    const answer = document.querySelector('.answer'); 
 
     if (!file) {
       console.log('Nenhum arquivo selecionado.');
@@ -44,24 +45,29 @@ function App() {
   };
 
   return (
-    <div className='container'>
-      <div className='box'>
-        {/* Input de arquivo */}
-        <input
-          type='file'
-          id='upload'
-          hidden
-          onChange={handleFileChange} // Captura o arquivo selecionado
-        />
-        <label htmlFor='upload' className='uploadFileContainer'>
-          Choose file
-        </label>
+    <div className='container_father'>
+      <div className='title'>
+        <h1>ThingRecognition</h1>
+      </div>
+      <div className='container'>
+        <div className='box'>
+          {/* Input de arquivo */}
+          <input
+            type='file'
+            id='upload'
+            hidden
+            onChange={handleFileChange} // Captura o arquivo selecionado
+          />
+          <label htmlFor='upload' className='uploadFileContainer'>
+            Choose file
+          </label>
 
-        {/* Botão de envio */}
-        <button onClick={activate} className='submitButton'>
-          Submit
-        </button>
-        <h3>Answer: <span className='answer'>----</span></h3>
+          {/* Botão de envio */}
+          <button onClick={activate} className='submitButton'>
+            Submit
+          </button>
+          <h3>Answer: <span className='answer'>----</span></h3>
+        </div>
       </div>
     </div>
   );
