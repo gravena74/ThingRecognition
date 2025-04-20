@@ -96,18 +96,23 @@ h1 {
   background-color: #eb966b;
 } 
 
-.info{
+.container_info{
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.container_info{
-  display: flex;
   background-color: #747bff;
   border-radius: 15px;
-  padding: 15px;
+  padding: 30px;
+}
 
+.container_info p{
+  text-align: start;
+  margin: 0 50px 30px 0;
+}
+
+.container_info .italicText{
+  font-style: italic;
+  font-weight: bold;
 }
 
 
