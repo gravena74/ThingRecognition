@@ -6,6 +6,7 @@ Este projeto foi criado como um estudo prático em aprendizado de máquina, demo
 <h3>📌 Sobre o Projeto</h3>
 O sistema utiliza uma CNN pré-treinada para classificar imagens em 10 categorias:
 
+
 ✈️ Avião
 
 🚗 Automóvel
